@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Educate a Child - Srijan Foundation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2b7de1;
+            --secondary: #f5a623;
+            --accent: #e74c3c;
+            --dark: #2c3e50;
+            --light: #ecf0f1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #1a5cb0 100%);
+            color: white;
+            text-align: center;
+            padding: 3rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            clip-path: ellipse(100% 80% at 50% 20%);
+        }
+        
+        .logo-container {
+            margin-bottom: 1.5rem;
+        }
+        
+        .logo {
+            height: 80px;
+            filter: drop-shadow(2px 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        .header h1 {
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            font-weight: 700;
+        }
+        
+        .header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            font-weight: 300;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 0;
+            padding: 0 2rem;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .donation-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            padding: 3rem;
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .donation-card::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--accent));
+        }
+        
+        .donation-amount {
+            font-size: 4rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            font-weight: 700;
+            margin: 1rem 0;
+            display: inline-block;
+        }
+        
+        .donation-text {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            color: var(--dark);
+        }
+        
+        .btn-donate {
+            background-color: var(--accent);
+            color: white;
+            border: none;
+            padding: 1.2rem 3rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(231, 76, 60, 0.4);
+            display: inline-block;
+            text-decoration: none;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn-donate:hover {
+            background-color: #c0392b;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(231, 76, 60, 0.6);
+        }
+        
+        .btn-donate:active {
+            transform: translateY(1px);
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .gallery img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.7);
+            color: white;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+        
+        .impact-section {
+            background: linear-gradient(135deg, var(--primary), #1a5cb0);
+            color: white;
+            padding: 3rem 2rem;
+            border-radius: 15px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .impact-stats {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 2rem 0;
+        }
+        
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+            flex: 1;
+            min-width: 200px;
+        }
+        
+        .stat-number {
+            font-size: 3rem;
+            color: white;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.9);
+            font-weight: 300;
+        }
+        
+        .comparison-box {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .comparison-title {
+            color: var(--dark);
+            margin-bottom: 1.5rem;
+            font-size: 1.5rem;
+            font-weight: 600;
+        }
+        
+        .comparison-items {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        
+        .comparison-item {
+            flex: 0 0 48%;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .comparison-icon {
+            width: 50px;
+            height: 50px;
+            background: var(--light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+            color: var(--accent);
+            font-size: 1.5rem;
+        }
+        
+        .testimonial {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 10px;
+            margin: 3rem 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            position: relative;
+        }
+        
+        .testimonial::before {
+            content: """;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            font-size: 5rem;
+            color: rgba(0,0,0,0.05);
+            font-family: serif;
+            line-height: 1;
+        }
+        
+        .testimonial p {
+            font-style: italic;
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+        }
+        
+        .testimonial-author img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 1rem;
+            object-fit: cover;
+        }
+        
+        .footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            margin-top: 3rem;
+        }
+        
+        .footer-logo {
+            height: 60px;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+        
+        .footer-link {
+            color: rgba(255,255,255,0.8);
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-link:hover {
+            color: white;
+        }
+        
+        .highlight {
+            color: var(--accent);
+            font-weight: 600;
+        }
+        
+        .tagline {
+            font-size: 1.1rem;
+            color: rgba(255,255,255,0.7);
+            margin-top: 1rem;
+        }
+        
+        .floating-shapes {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .shape {
+            position: absolute;
+            opacity: 0.1;
+            border-radius: 50%;
+        }
+        
+        .shape-1 {
+            width: 200px;
+            height: 200px;
+            background: var(--secondary);
+            top: -50px;
+            right: -50px;
+        }
+        
+        .shape-2 {
+            width: 150px;
+            height: 150px;
+            background: var(--accent);
+            bottom: -30px;
+            left: -30px;
+        }
+        
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+            
+            .donation-amount {
+                font-size: 3rem;
+            }
+            
+            .comparison-items {
+                flex-direction: column;
+            }
+            
+            .comparison-item {
+                flex: 0 0 100%;
+            }
+            
+            .btn-donate {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+        </div>
+        <div class="logo-container">
+            <img src="SRIJAN_FOUNDATION_20250512_014304_0000_page-0001-removebg-preview.png" alt="Srijan Foundation Logo" class="logo">
+        </div>
+        <h1>Educate a Child with Just ₹10</h1>
+        <p>Your small contribution can break the cycle of poverty through education</p>
+    </div>
+    
+    <div class="container">
+        <div class="donation-card">
+            <h2>Change Lives with Your Daily Small Change</h2>
+            <div class="donation-amount">₹10</div>
+            <p class="donation-text">
+                The price of <span class="highlight">one packet of chips</span> or <span class="highlight">a bottle of water</span> can provide 
+                <span class="highlight">educational materials</span> to a child for a week. Imagine if 10,000 people like you donated 
+                just ₹10 - we could run an entire school for a month!
+            </p>
+            <a href="https://rzp.io/rzp/VKMvu0u" class="btn-donate">Donate Now & Transform Lives</a>
+        </div>
+        
+        <div class="comparison-box">
+            <div class="comparison-title">What ₹10 Means in India</div>
+            <div class="comparison-items">
+                <div class="comparison-item">
+                    <div class="comparison-icon">🍟</div>
+                    <div>One-time snack vs. <span class="highlight">a week of notebooks</span></div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚬</div>
+                    <div>One cigarette vs. <span class="highlight">a month of pencils</span></div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🚌</div>
+                    <div>Bus fare vs. <span class="highlight">a child's school meal</span></div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comparison-icon">🥤</div>
+                    <div>Cold drink vs. <span class="highlight">educational toys</span></div>
+                </div>
+            </div>
+        </div>
+        
+        <h2 style="text-align: center; margin: 2rem 0 1rem; color: var(--dark);">The Faces of India's Future</h2>
+        <p style="text-align: center; margin-bottom: 2rem; color: #666;">These are the children your ₹10 can help educate</p>
+        
+        <div class="gallery">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1606761568499-6d2451b23c66?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Indian child studying">
+                <div class="gallery-caption">Riya, 8, dreams of becoming a doctor</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Children in Indian classroom">
+                <div class="gallery-caption">A classroom supported by donations like yours</div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Girl writing in notebook">
+                <div class="gallery-caption">Priya practicing writing with donated supplies</div>
+            </div>
+        </div>
+        
+        <div class="impact-section">
+            <h2 style="margin-bottom: 1.5rem;">The Power of Small Donations</h2>
+            <p style="max-width: 800px; margin: 0 auto 2rem; opacity: 0.9;">When thousands come together with small contributions, we can create massive change in children's lives through education</p>
+            
+            <div class="impact-stats">
+                <div class="stat-item">
+                    <div class="stat-number">₹10</div>
+                    <div class="stat-label">Small Amount</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">=</div>
+                    <div class="stat-label">Big Impact</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Hope for Future</div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="testimonial">
+            <p>"I used to spend ₹10 daily on cigarettes. When I redirected that money to Srijan Foundation, not only did I quit smoking, but I also sponsored little Arjun's education. Today he's top of his class, and I've never felt better about my small contribution."</p>
+            <div class="testimonial-author">
+                <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-1.2.1&auto=format&fit=crop&w=100&q=60" alt="Rajesh Kumar">
+                <span>Rajesh Kumar, Monthly Donor from Mumbai</span>
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin: 3rem 0;">
+            <h3 style="color: var(--dark); margin-bottom: 1.5rem; font-size: 1.8rem;">Today You'll Spend ₹10 On Something</h3>
+            <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 700px; margin-left: auto; margin-right: auto; color: #555;">
+                Will it be another momentary pleasure, or an investment in a child's lifelong future?
+            </p>
+            <a href="https://rzp.io/rzp/VKMvu0u" class="btn-donate">Donate ₹10 Now</a>
+            <p style="margin-top: 1rem; font-size: 0.9rem; color: #888;">Join thousands of Indians in this movement</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <img src="SRIJAN_FOUNDATION_20250512_014304_0000_page-0001-removebg-preview.png" alt="Srijan Foundation Logo" class="footer-logo">
+        <div class="footer-links">
+            <a href="#" class="footer-link">About Us</a>
+            <a href="#" class="footer-link">Our Work</a>
+            <a href="#" class="footer-link">Transparency</a>
+            <a href="#" class="footer-link">Contact</a>
+        </div>
+        <p class="tagline">Transforming lives through education, one ₹10 donation at a time</p>
+    </div>
+</body>
+</html>
